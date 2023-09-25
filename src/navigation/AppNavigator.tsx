@@ -1,7 +1,7 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Home} from '../Screens';
-const Stack = createStackNavigator();
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {routes} from '../utils';
+const Tab = createBottomTabNavigator();
 
 interface Props {
   isDarkMode: boolean;
@@ -10,14 +10,28 @@ interface Props {
 
 const AppNavigator: React.FC<Props> = ({isDarkMode, backgroundStyle}) => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="HomeStack"
-        component={Home}
-        options={{headerShown: false}}
-        initialParams={{isDarkMode, backgroundStyle}}
-      />
-    </Stack.Navigator>
+    <Tab.Navigator
+      initialRouteName="Progile"
+      backBehavior="initialRoute"
+      screenOptions={{
+        tabBarActiveTintColor: isDarkMode ? '#fff' : '#000',
+        tabBarInactiveTintColor: '#9A9A9A',
+        tabBarStyle: {
+          backgroundColor: backgroundStyle.backgroundColor,
+          borderTopColor: 'transparent',
+        },
+      }}>
+      {routes.map((route, index) => (
+        <Tab.Screen
+          options={{
+            headerShown: false,
+          }}
+          key={index}
+          name={route.name}
+          component={route.component}
+        />
+      ))}
+    </Tab.Navigator>
   );
 };
 

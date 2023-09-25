@@ -4,8 +4,17 @@ import React from 'react';
 import {useDarkMode} from '../../hooks';
 import {PropsText} from './interface';
 
-const Title: React.FC<PropsText> = ({title}) => {
+const Title: React.FC<PropsText> = ({title, fontSize, fontWeight, opacity}) => {
   const {isDarkMode} = useDarkMode();
+
+  const styles = StyleSheet.create({
+    sectionTitle: {
+      fontSize: fontSize || 24,
+      fontWeight: fontWeight || '600',
+      opacity: opacity || 1,
+    },
+  });
+
   return (
     <Text
       style={[
@@ -18,10 +27,3 @@ const Title: React.FC<PropsText> = ({title}) => {
 };
 
 export default Title;
-
-const styles = StyleSheet.create({
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-});
