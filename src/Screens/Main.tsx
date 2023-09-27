@@ -1,15 +1,15 @@
 import {StatusBar} from 'react-native';
 import React from 'react';
 import {useDarkMode} from '../hooks';
-import {AppNavigator} from '../navigation';
+import StackNavigator from '../navigation/StackNavigator';
 
 const Main = () => {
-  const {isDarkMode, backgroundStyle} = useDarkMode();
+  const {isDarkMode} = useDarkMode();
 
   return (
     <>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppNavigator isDarkMode={isDarkMode} backgroundStyle={backgroundStyle} />
+      <StackNavigator />
     </>
   );
 };

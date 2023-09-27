@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   },
   sectionContainer: {
     flex: 1,
-    padding: 24,
-    margin: 10,
+    padding: 25,
   },
 });

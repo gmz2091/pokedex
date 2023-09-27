@@ -1,17 +1,21 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {routes} from '../utils';
-const Tab = createBottomTabNavigator();
+import {useDarkMode} from '../hooks';
 
-interface Props {
-  isDarkMode: boolean;
-  backgroundStyle: any;
-}
+type TabNavigatorProps = {
+  Profile: undefined;
+  Pokemons: undefined;
+  Pokedex: undefined;
+};
 
-const AppNavigator: React.FC<Props> = ({isDarkMode, backgroundStyle}) => {
+const Tab = createBottomTabNavigator<TabNavigatorProps>();
+
+const AppNavigator: React.FC = () => {
+  const {isDarkMode, backgroundStyle} = useDarkMode();
   return (
     <Tab.Navigator
-      initialRouteName="Progile"
+      initialRouteName="Pokemons"
       backBehavior="initialRoute"
       screenOptions={{
         tabBarActiveTintColor: isDarkMode ? '#fff' : '#000',
@@ -27,7 +31,7 @@ const AppNavigator: React.FC<Props> = ({isDarkMode, backgroundStyle}) => {
             headerShown: false,
           }}
           key={index}
-          name={route.name}
+          name={route.name as keyof TabNavigatorProps}
           component={route.component}
         />
       ))}

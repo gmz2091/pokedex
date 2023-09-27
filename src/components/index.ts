@@ -3,3 +3,7 @@ export {default as Text} from './Text/Text';
 export {default as Avatar} from './Avatar/Avatar';
 export {default as ViewStack} from './VStack/VStack';
 export {default as Switch} from './Switch/Switch';
+export {default as Button} from './Button/Button';
+export {default as Loader} from './Loader/Loader';
+export {default as FlatListComponent} from './FlatList/FlatList';
+export {default as PokemonCard} from './PokemonCard/PokemonCard';

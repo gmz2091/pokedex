@@ -4,7 +4,13 @@ import React from 'react';
 import {useDarkMode} from '../../hooks';
 import {PropsText} from './interface';
 
-const Title: React.FC<PropsText> = ({title, fontSize, fontWeight, opacity}) => {
+const Title: React.FC<PropsText> = ({
+  title,
+  fontSize,
+  fontWeight,
+  opacity,
+  color,
+}) => {
   const {isDarkMode} = useDarkMode();
 
   const styles = StyleSheet.create({
@@ -12,18 +18,11 @@ const Title: React.FC<PropsText> = ({title, fontSize, fontWeight, opacity}) => {
       fontSize: fontSize || 24,
       fontWeight: fontWeight || '600',
       opacity: opacity || 1,
+      color: color || (isDarkMode ? Colors.white : Colors.black),
     },
   });
 
-  return (
-    <Text
-      style={[
-        styles.sectionTitle,
-        {color: isDarkMode ? Colors.white : Colors.black},
-      ]}>
-      {title}
-    </Text>
-  );
+  return <Text style={[styles.sectionTitle]}>{title}</Text>;
 };
 
 export default Title;

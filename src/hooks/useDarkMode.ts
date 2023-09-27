@@ -22,13 +22,12 @@ export const useDarkMode = () => {
 
   useEffect(() => {
     const darkMode = async () => {
-      await AsyncStorage.getItem('@darkMode').then(value => {
-        if (value !== null) {
-          dispatch(setDarkMode(value));
-          return;
-        }
-        dispatch(setDarkMode('light'));
-      });
+      const value = await AsyncStorage.getItem('@darkMode');
+      if (value !== null) {
+        dispatch(setDarkMode(value));
+        return;
+      }
+      dispatch(setDarkMode('light'));
     };
 
     darkMode();
