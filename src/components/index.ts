@@ -7,3 +7,5 @@ export {default as Button} from './Button/Button';
 export {default as Loader} from './Loader/Loader';
 export {default as FlatListComponent} from './FlatList/FlatList';
 export {default as PokemonCard} from './PokemonCard/PokemonCard';
+export {default as CardInfoPokemon} from './CardInfoPokemon/CardInfoPokemon';
+export {default as InfoPokemon} from './InfoPokemon/InfoPokemon';

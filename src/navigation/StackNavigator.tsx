@@ -3,12 +3,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {EditProfile, DetailPokemon} from '../Screens';
 import AppNavigator from './AppNavigator';
 import {Pokemon} from '../interface';
-import {NavigatorScreenParams} from '@react-navigation/native';
 
-type StackNavigatorProps = {
+export type StackNavigatorProps = {
   AppNavigator: undefined;
   EditProfile: undefined;
-  DetailPokemon: NavigatorScreenParams<Pokemon>;
+  DetailPokemon: {
+    pokemon: Pokemon;
+    color: string;
+  };
 };
 
 const Stack = createNativeStackNavigator<StackNavigatorProps>();

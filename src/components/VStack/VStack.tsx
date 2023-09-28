@@ -8,9 +8,10 @@ const VStack = ({
   direction,
   justifyContent,
   flex,
+  wrap,
 }: IProps) => {
   return (
-    <ViewStack {...{center, direction, justifyContent, flex}}>
+    <ViewStack {...{center, direction, justifyContent, flex, wrap}}>
       {children}
     </ViewStack>
   );

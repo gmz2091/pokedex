@@ -33,5 +33,5 @@ export const useDarkMode = () => {
     darkMode();
   }, [dark, dispatch]);
 
-  return {isDarkMode, toggleSwitchDark, dark, backgroundStyle};
+  return {isDarkMode, toggleSwitchDark, dark, backgroundStyle, Colors};
 };

@@ -12,7 +12,7 @@ const Home: React.FC = ({navigation}: any) => {
   const {pokemonsList, getPokemons} = usePokemons();
   return (
     <SafeView>
-      <Text title="Home" />
+      <Text title="Pokemons" />
       <ViewStack center>
         <FlatListComponent
           data={pokemonsList}

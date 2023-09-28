@@ -3,6 +3,7 @@ import {StyleSheet, View, Image} from 'react-native';
 import {Pokemon} from '../../interface';
 import {Text, ViewStack, Button} from '..';
 import {usePokemonCard} from './hooks/usePokemonCard';
+import {useUtils} from '../../hooks';
 
 interface Props {
   navigation?: any;
@@ -10,22 +11,22 @@ interface Props {
 }
 
 const PokemonCard: React.FC<Props> = ({navigation, pokemon}) => {
-  console.log('navigation', navigation);
-  const {capitalize, width, height, colorFont, backColor} =
-    usePokemonCard(pokemon);
+  const {backColor} = usePokemonCard(pokemon);
+  const {width, height} = useUtils();
   return (
     <Button
       justifyContent="flex-start"
       width={width * 0.4}
       height={height * 0.1}
       color={backColor}
-      onPress={() => navigation.navigate('DetailPokemon')}>
+      onPress={() =>
+        navigation.navigate('DetailPokemon', {
+          pokemon,
+          color: backColor,
+        })
+      }>
       <ViewStack>
-        <Text
-          color={colorFont(backColor)}
-          fontSize={15}
-          title={capitalize(pokemon.name)}
-        />
+        <Text bgColor={backColor} fontSize={15} title={pokemon.name} />
       </ViewStack>
       <View style={{...styles.containerImg}}>
         <Image

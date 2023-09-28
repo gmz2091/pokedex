@@ -7,4 +7,5 @@ export interface StackPropsStyled {
   direction?: 'row' | 'column';
   justifyContent?: 'space-between' | 'center' | 'flex-start';
   flex?: number;
+  wrap?: boolean;
 }

@@ -17,6 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   left,
   right,
   justifyContent,
+  opacity,
 }) => {
   return (
     <ContainerButton
@@ -29,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
         left,
         right,
         justifyContent,
+        opacity,
       }}>
       <ButtonStyled activeOpacity={0.8} onPress={onPress} disabled={disabled}>
         {title && <Text>{title}</Text>}

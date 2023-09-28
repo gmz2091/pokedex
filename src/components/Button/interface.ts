@@ -15,4 +15,5 @@ export interface StyledButtonProps {
   left?: number;
   right?: number;
   justifyContent?: 'center' | 'flex-start' | 'flex-end';
+  opacity?: number;
 }

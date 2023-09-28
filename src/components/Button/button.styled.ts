@@ -3,7 +3,17 @@ import styled from 'styled-components/native';
 import {StyledButtonProps} from './interface';
 
 export const ContainerButton = styled(View)<StyledButtonProps>(
-  ({rounded, color, width, height, absolute, left, right, justifyContent}) => ({
+  ({
+    rounded,
+    color,
+    width,
+    height,
+    absolute,
+    left,
+    right,
+    justifyContent,
+    opacity,
+  }) => ({
     backgroundColor: color || '#000',
     flexDirection: 'row',
     alignItems: 'center',
@@ -16,6 +26,8 @@ export const ContainerButton = styled(View)<StyledButtonProps>(
     right: right,
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     margin: 8,
+    zIndex: 1,
+    opacity: opacity || 1,
   }),
 );
 

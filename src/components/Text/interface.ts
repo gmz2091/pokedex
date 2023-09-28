@@ -1,5 +1,6 @@
 export interface PropsText {
   color?: string;
+  bgColor?: string;
   title: string;
   fontSize?: number;
   fontWeight?:
