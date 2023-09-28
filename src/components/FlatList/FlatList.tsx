@@ -9,6 +9,7 @@ const FlatListComponent = <T,>({
   renderItem,
   onEndReached,
   numColumns,
+  showLoader,
 }: FlatListType<T>) => {
   const {width} = Dimensions.get('window');
   return (
@@ -19,7 +20,7 @@ const FlatListComponent = <T,>({
         renderItem={renderItem}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.4}
-        ListFooterComponent={<Loader />}
+        ListFooterComponent={showLoader && <Loader />}
         showsVerticalScrollIndicator={false}
         numColumns={numColumns}
       />

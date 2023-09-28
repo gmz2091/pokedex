@@ -5,7 +5,7 @@ export interface PokemonDetails {
   gameIndices: GameIndex[];
   height: number;
   heldItems: any[];
-  id: number;
+  id: number | string;
   isDefault: boolean;
   locationAreaEncounters: string;
   moves: Move[];

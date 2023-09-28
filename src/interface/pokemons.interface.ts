@@ -1,3 +1,5 @@
+import {PokemonDetails} from './pokemonDetails.interface';
+
 export interface PokemonsRes {
   count: number;
   next: string;
@@ -10,9 +12,9 @@ export interface PokemonResUrl {
   url: string;
 }
 
-export interface Pokemon {
-  id: string;
+export interface Pokemon extends Omit<PokemonDetails, 'sprites'> {
+  id: number | string;
   name: string;
-  picture: string;
+  picture?: string;
   color?: string;
 }

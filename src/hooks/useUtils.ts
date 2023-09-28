@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, Alert} from 'react-native';
 
 export const useUtils = () => {
   const {width, height} = Dimensions.get('window');
@@ -14,5 +14,14 @@ export const useUtils = () => {
     return yiq >= 128 ? 'black' : 'white';
   };
 
-  return {capitalize, width, height, colorFont};
+  const showAlert = (title: string, message: string) => {
+    Alert.alert(title, message, [
+      {
+        text: 'OK',
+        onPress: () => {},
+      },
+    ]);
+  };
+
+  return {capitalize, width, height, colorFont, showAlert};
 };

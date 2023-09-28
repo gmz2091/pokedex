@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {PokemonDetails} from '../interface';
 import {api, config} from '../api';
 
-export const usePokemon = (id: string) => {
+export const usePokemon = (id: string | number) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails>(
     {} as PokemonDetails,

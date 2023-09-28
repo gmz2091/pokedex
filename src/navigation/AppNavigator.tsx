@@ -2,6 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {routes} from '../utils';
 import {useDarkMode} from '../hooks';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 type TabNavigatorProps = {
   Profile: undefined;
@@ -29,6 +30,9 @@ const AppNavigator: React.FC = () => {
         <Tab.Screen
           options={{
             headerShown: false,
+            tabBarIcon: ({color}) => (
+              <Icon name={route.icon} color={color} size={24} />
+            ),
           }}
           key={index}
           name={route.name as keyof TabNavigatorProps}

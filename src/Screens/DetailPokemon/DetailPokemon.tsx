@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,7 +11,7 @@ import {
   Text,
   ViewStack,
 } from '../../components';
-import {usePokemon} from '../../hooks';
+import {usePokedex, usePokemon} from '../../hooks';
 import {styles} from './styled';
 
 interface Props
@@ -20,18 +20,55 @@ interface Props
 const DetailPokemon: React.FC<Props> = ({navigation, route}) => {
   const {pokemon, color} = route.params;
   const {pokemonDetails, loading} = usePokemon(pokemon.id);
+  const {isExist, addPokemon, removePokemon, checkPokemon} = usePokedex();
+
+  useEffect(() => {
+    checkPokemon(pokemon.name);
+  }, [pokemon.name]);
 
   return (
     <SafeView>
-      <Button
-        color="#7E7D7D"
-        rounded
-        width="50px"
-        height="50px"
-        absolute
-        onPress={() => navigation.goBack()}>
-        <Icon name="arrow-back-ios-new" size={25} />
-      </Button>
+      <ViewStack justifyContent="space-between" direction="row">
+        <Button
+          color="#7E7D7D"
+          rounded
+          width="50px"
+          height="50px"
+          onPress={() => navigation.goBack()}>
+          <Icon name="arrow-back-ios-new" size={25} />
+        </Button>
+        {isExist && (
+          <Button
+            color="#7E7D7D"
+            rounded
+            width="50px"
+            height="50px"
+            right={25}
+            onPress={() => removePokemon(pokemon.name)}>
+            <Icon name="delete" size={25} />
+          </Button>
+        )}
+        {!isExist && (
+          <Button
+            color="#7E7D7D"
+            rounded
+            width="50px"
+            height="50px"
+            right={25}
+            onPress={() =>
+              addPokemon({
+                ...pokemon,
+                types: pokemonDetails.types[0],
+                moves: [
+                  pokemonDetails.moves[0],
+                  pokemonDetails.moves[pokemonDetails.moves.length - 1],
+                ],
+              })
+            }>
+            <Icon name="add" size={25} />
+          </Button>
+        )}
+      </ViewStack>
       <ViewStack center>
         <Text bgColor={color} title={pokemon.name} />
       </ViewStack>

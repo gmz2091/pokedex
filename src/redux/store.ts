@@ -1,10 +1,11 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
-import {darkMode, accountReducer} from './reducers';
+import {darkMode, accountReducer, pokemonReducer} from './reducers';
 
 export const store = configureStore({
   reducer: {
     darkMode: darkMode,
     accountReducer: accountReducer,
+    pokemonReducer: pokemonReducer,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: false,

@@ -5,6 +5,7 @@ export interface FlatListType<T>
   data: T[];
   keyExtractor: (item: T) => string;
   renderItem: ({item}: {item: T}) => JSX.Element;
-  onEndReached: () => void;
+  onEndReached?: () => void;
   numColumns?: number;
+  showLoader?: boolean;
 }

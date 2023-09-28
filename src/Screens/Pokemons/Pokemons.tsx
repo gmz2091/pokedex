@@ -16,12 +16,13 @@ const Home: React.FC = ({navigation}: any) => {
       <ViewStack center>
         <FlatListComponent
           data={pokemonsList}
-          keyExtractor={pokemon => pokemon.id}
+          keyExtractor={pokemon => pokemon.id.toString()}
           renderItem={({item}) => (
             <PokemonCard navigation={navigation} pokemon={item} />
           )}
           onEndReached={getPokemons}
           numColumns={2}
+          showLoader
         />
       </ViewStack>
     </SafeView>

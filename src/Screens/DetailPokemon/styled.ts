@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     width: 200,
     height: 200,
     position: 'absolute',
-    top: 50,
+    top: -10,
   },
   cardContent: {
     marginTop: height * 0.4,

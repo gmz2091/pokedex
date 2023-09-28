@@ -13,6 +13,32 @@ interface Props {
 const PokemonCard: React.FC<Props> = ({navigation, pokemon}) => {
   const {backColor} = usePokemonCard(pokemon);
   const {width, height} = useUtils();
+
+  const styles = StyleSheet.create({
+    containerImg: {
+      width: 80,
+      height: 80,
+      overflow: 'hidden',
+      position: 'absolute',
+      right: -10,
+      bottom: pokemon.types && pokemon.moves ? -12 : -22,
+    },
+    pokeball: {
+      width: 100,
+      height: 100,
+      right: -10,
+      bottom: -10,
+      opacity: 0.3,
+    },
+    pokemonImage: {
+      width: 80,
+      height: 80,
+      position: 'absolute',
+      right: -20,
+      bottom: pokemon.types && pokemon.moves ? -10 : -20,
+    },
+  });
+
   return (
     <Button
       justifyContent="flex-start"
@@ -25,48 +51,36 @@ const PokemonCard: React.FC<Props> = ({navigation, pokemon}) => {
           color: backColor,
         })
       }>
-      <ViewStack>
-        <Text bgColor={backColor} fontSize={15} title={pokemon.name} />
-      </ViewStack>
-      <View style={{...styles.containerImg}}>
+      <ViewStack center justifyContent="space-between" direction="row">
+        <ViewStack>
+          <Text bgColor={backColor} fontSize={15} title={pokemon.name} />
+          {pokemon.types && (
+            <Text
+              bgColor={backColor}
+              fontSize={10}
+              title={pokemon.types.type.name}
+            />
+          )}
+          {pokemon.moves &&
+            pokemon.moves.map(move => (
+              <Text bgColor={backColor} fontSize={10} title={move.move.name} />
+            ))}
+        </ViewStack>
+        <View style={{...styles.containerImg}}>
+          <Image
+            source={require('../../assets/images/pokeball.png')}
+            style={styles.pokeball}
+          />
+        </View>
         <Image
-          source={require('../../assets/images/pokeball.png')}
-          style={styles.pokeball}
+          style={styles.pokemonImage}
+          source={{
+            uri: pokemon.picture,
+          }}
         />
-      </View>
-      <Image
-        style={styles.pokemonImage}
-        source={{
-          uri: pokemon.picture,
-        }}
-      />
+      </ViewStack>
     </Button>
   );
 };
 
 export default PokemonCard;
-
-const styles = StyleSheet.create({
-  containerImg: {
-    width: 80,
-    height: 80,
-    overflow: 'hidden',
-    position: 'absolute',
-    right: 0,
-    bottom: -12,
-  },
-  pokeball: {
-    width: 100,
-    height: 100,
-    right: -10,
-    bottom: -10,
-    opacity: 0.3,
-  },
-  pokemonImage: {
-    width: 80,
-    height: 80,
-    position: 'absolute',
-    right: -10,
-    bottom: -10,
-  },
-});
