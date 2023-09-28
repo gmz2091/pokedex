@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {routes} from '../utils';
-import {useDarkMode} from '../hooks';
+import {useDarkMode, useUtils} from '../hooks';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 type TabNavigatorProps = {

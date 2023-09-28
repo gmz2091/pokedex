@@ -9,11 +9,12 @@ import {
   Switch,
   Button,
 } from '../../components';
-import {useDarkMode, useModifyAccount} from '../../hooks';
+import {useDarkMode, useModifyAccount, useUtils} from '../../hooks';
 
 const Profile = ({navigation}: any) => {
   const {toggleSwitchDark, dark} = useDarkMode();
-  const {userData} = useModifyAccount();
+  const {width, chooseImage} = useUtils();
+  const {userData, dataUsr, modifyAccount} = useModifyAccount();
 
   return (
     <SafeView>
@@ -28,7 +29,19 @@ const Profile = ({navigation}: any) => {
         <Icon name="create" size={25} />
       </Button>
       <ViewStack center direction="column">
-        <Avatar uri={userData.imageProfile} />
+        <ViewStack center>
+          <Button
+            color="#CC1414"
+            rounded
+            absolute
+            right={width / 2 - 20}
+            width="35px"
+            height="35px"
+            onPress={() => chooseImage(modifyAccount)}>
+            <Icon color="#fff" name="camera-alt" size={17} />
+          </Button>
+          <Avatar uri={userData.imageProfile || dataUsr.imageProfile} />
+        </ViewStack>
         <Text fontSize={20} title={userData.fullName || 'John Doe'} />
       </ViewStack>
       <ViewStack flex={1} justifyContent="space-between" direction="column">

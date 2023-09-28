@@ -63,7 +63,12 @@ const PokemonCard: React.FC<Props> = ({navigation, pokemon}) => {
           )}
           {pokemon.moves &&
             pokemon.moves.map(move => (
-              <Text bgColor={backColor} fontSize={10} title={move.move.name} />
+              <Text
+                key={move.move.name}
+                bgColor={backColor}
+                fontSize={10}
+                title={move.move.name}
+              />
             ))}
         </ViewStack>
         <View style={{...styles.containerImg}}>

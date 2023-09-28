@@ -12,24 +12,27 @@ export const useModifyAccount = () => {
   const [dataUsr, setDataUsr] = useState({
     fullName: userData.fullName || '',
     birthdate: userData.birthdate || date || '',
-    imageProfile: userData.imageProfile || '',
+    imageProfile: userData.imageProfile,
   });
 
-  const modifyAccount = () => {
-    dispatch(setAccount(dataUsr as any));
+  const modifyAccount = (image?: string) => {
+    if (image) {
+      dispatch(setAccount({...dataUsr, imageProfile: image}));
+    } else {
+      dispatch(setAccount(dataUsr as any));
+    }
     showAlert('Success', 'Account has been modified');
   };
 
   useEffect(() => {
     const getAccount = async () => {
       const account = await AsyncStorage.getItem('@account');
-      console.log('account', account);
       if (account) {
         dispatch(setAccount(JSON.parse(account)));
       }
     };
     getAccount();
-  }, [dispatch, dataUsr]);
+  }, [dispatch]);
 
   return {modifyAccount, userData, dataUsr, setDataUsr};
 };
