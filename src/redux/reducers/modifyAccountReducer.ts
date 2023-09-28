@@ -13,8 +13,8 @@ interface UserData {
 
 const initialState: UserData = {
   userData: {
-    fullName: '',
-    birthdate: '',
+    fullName: 'John Doe',
+    birthdate: '1999-01-01',
     imageProfile: '',
   },
 };

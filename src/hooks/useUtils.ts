@@ -1,6 +1,10 @@
+import moment from 'moment';
+import {useState} from 'react';
 import {Dimensions, Alert} from 'react-native';
 
 export const useUtils = () => {
+  const now = moment(new Date()).format('YYYY-MM-DD');
+  const [date, setDate] = useState(now);
   const {width, height} = Dimensions.get('window');
   const capitalize = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -23,5 +27,5 @@ export const useUtils = () => {
     ]);
   };
 
-  return {capitalize, width, height, colorFont, showAlert};
+  return {capitalize, width, height, colorFont, showAlert, date, setDate};
 };

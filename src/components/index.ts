@@ -9,3 +9,4 @@ export {default as FlatListComponent} from './FlatList/FlatList';
 export {default as PokemonCard} from './PokemonCard/PokemonCard';
 export {default as CardInfoPokemon} from './CardInfoPokemon/CardInfoPokemon';
 export {default as InfoPokemon} from './InfoPokemon/InfoPokemon';
+export {default as TextField} from './TextField/TextField';
